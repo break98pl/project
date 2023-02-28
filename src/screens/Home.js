@@ -23,6 +23,7 @@ const Home = () =>{
 
   const getIdReadedFromStorage = async() =>{
     const data = await AsyncStorage.getItem(STORAGE_KEY.listSelect);
+    console.log(JSON.parse(data));
     setListIdSelected(JSON.parse(data))
   }
 
@@ -48,7 +49,7 @@ const Home = () =>{
   }
 
   useEffect(() =>{
-    saveToStorage(listIdSelected)
+    if(listIdSelected.length > 0)saveToStorage(listIdSelected)
   }, [listIdSelected])
 
   useEffect(() =>{
